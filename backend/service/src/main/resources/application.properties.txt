@@ -1,0 +1,43 @@
+spring.application.name=SBNZ
+
+# spring.sql.init.schema-locations=classpath*:db/${database}/schema.sql
+# spring.sql.init.data-locations=classpath*:data-h2.sql
+spring.datasource.url = jdbc:h2:~/test
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=true
+spring.sql.init.mode=always
+
+
+spring.jpa.defer-datasource-initialization=true
+
+# JPA
+spring.jpa.hibernate.ddl-auto=create-drop
+
+# Actuator
+management.endpoints.web.exposure.include=*
+
+# Logging
+logging.level.org.springframework=INFO
+# logging.level.org.springframework.web=DEBUG
+# logging.level.org.springframework.context.annotation=TRACE
+
+# Maximum time static resources should be cached
+spring.web.resources.cache.cachecontrol.max-age=12h
+
+# JWT Configuration
+jwt.secret=bLVfJrsRJgYYSTjPQD0zS7gKf2A6AhX4sdWr2oDYmKvWpJ4CgKdeMf1VdnE6wbmO9JfQYzV8GBj8yBrQZ5NBhg==
+
+# Mail Configuration
+spring.mail.host=sandbox.smtp.mailtrap.io
+spring.mail.port=2525
+spring.mail.username=e2212abfd22df4
+spring.mail.password=c01a36b6f1b678
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.from=luka@example.com
