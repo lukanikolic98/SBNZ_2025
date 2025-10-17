@@ -1,0 +1,21 @@
+<div class="hero-container">
+  <div class="hero">
+    <!-- Left side: image -->
+    <div class="hero-image">
+      <img src="assets/background2.png" alt="Hero" />
+    </div>
+
+    <!-- Right side: form -->
+    <div class="hero-form">
+      <form>
+        <h2>Set the mood...</h2>
+        <chips-input></chips-input>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+</div>
