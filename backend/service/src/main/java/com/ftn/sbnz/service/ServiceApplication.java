@@ -4,19 +4,22 @@ import java.util.Arrays;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieScanner;
 import org.kie.api.runtime.KieContainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@SpringBootApplication
-public class ServiceApplication  {
-	
+@SpringBootApplication(scanBasePackages = "com.ftn.sbnz")
+@EntityScan("com.ftn.sbnz.model.models")
+public class ServiceApplication {
+
 	private static Logger log = LoggerFactory.getLogger(ServiceApplication.class);
+
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(ServiceApplication.class, args);
 
@@ -39,7 +42,7 @@ public class ServiceApplication  {
 		kScanner.start(1000);
 		return kContainer;
 	}
-	
+
 	/*
 	 * KieServices ks = KieServices.Factory.get(); KieContainer kContainer =
 	 * ks.newKieContainer(ks.newReleaseId("drools-spring-v2",

@@ -1,4 +1,4 @@
-package com.ftn.sbnz.service;
+package com.ftn.sbnz.service.service;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

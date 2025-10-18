@@ -1,7 +1,8 @@
 package com.ftn.sbnz.service.config;
 
 import com.ftn.sbnz.service.filters.JwtRequestFilter;
-import com.ftn.sbnz.service.CustomUserDetailsService;
+import com.ftn.sbnz.service.service.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +26,10 @@ public class SecurityConfig {
   @Autowired
   private CustomUserDetailsService userDetailsService;
 
+  @SuppressWarnings("deprecation")
   @Bean
   public DaoAuthenticationProvider authenticationProvider() {
+    @SuppressWarnings("deprecation")
     DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
     authProvider.setUserDetailsService(userDetailsService);
     authProvider.setPasswordEncoder(passwordEncoder());

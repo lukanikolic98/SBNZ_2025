@@ -1,8 +1,12 @@
 package com.ftn.sbnz.service.filters;
 
 import java.io.IOException;
-import com.ftn.sbnz.service.CustomUserDetailsService;
-import com.ftn.sbnz.service.JwtService;
+
+import com.ftn.sbnz.service.service.CustomUserDetailsService;
+import com.ftn.sbnz.service.service.JwtService;
+
+import io.jsonwebtoken.ExpiredJwtException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,28 +40,24 @@ public class JwtRequestFilter extends OncePerRequestFilter {
       return;
     }
 
-    final Cookie[] cookies = request.getCookies();
+    final String authorizationHeader = request.getHeader("Authorization");
+
+    String username = null;
     String jwt = null;
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        if ("jwt".equals(cookie.getName())) {
-          jwt = cookie.getValue();
-        }
-      }
-    }
 
-    String email = null;
-    if (jwt != null) {
+    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+      jwt = authorizationHeader.substring(7);
       try {
-        email = jwtService.extractUsername(jwt);
-      } catch (Exception e) {
-        // Invalid token
+        username = jwtService.extractUsername(jwt);
+      } catch (ExpiredJwtException e) {
+        // token je istekao
         logger.warn("JWT token is invalid: " + e.getMessage());
+
       }
     }
 
-    if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-      UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
+    if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
       if (jwtService.validateToken(jwt, userDetails)) {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

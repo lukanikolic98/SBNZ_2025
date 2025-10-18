@@ -1,4 +1,4 @@
-package com.ftn.sbnz.service;
+package com.ftn.sbnz.service.service;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     return new org.springframework.security.core.userdetails.User(
         user.getEmail(),
         user.getPassword(),
-        user.isVerified(), // enabled
+        user.isActivated(), // enabled
         true, // accountNonExpired
         true, // credentialsNonExpired
         true, // accountNonLocked
