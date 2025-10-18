@@ -16,6 +16,8 @@ import { ChipsInputComponent } from './shared/components/chips-input/chips-input
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { MoviesLayoutComponent } from './shared/components/movies-layout/movies-layout.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { MatChipsModule } from '@angular/material/chips';
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
-    MovieCardComponent,
     ChipsInputComponent,
     MatIconModule,
     MatFormFieldModule,
     MatChipsModule,
+    MatCardModule,
+    MovieCardComponent,
+    MoviesLayoutComponent,
   ],
   bootstrap: [AppComponent],
 })

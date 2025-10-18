@@ -2,13 +2,17 @@
   <div class="hero">
     <!-- Left side: image -->
     <div class="hero-image">
-      <img src="assets/background2.png" alt="Hero" />
+      <img src="assets/BG3.png" alt="Hero" />
     </div>
 
     <!-- Right side: form -->
     <div class="hero-form">
       <form>
-        <h2>Set the mood...</h2>
+        <h1>Set the mood... 🎥</h1>
+        <span>
+          Enter mood & genre keywords and we will do our best to give you some
+          good movie options!
+        </span>
         <chips-input></chips-input>
         <button type="submit">Submit</button>
       </form>
@@ -16,6 +20,9 @@
   </div>
 </div>
 
-<div class="card-container">
-  <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
-</div>
+<section class="recommendation-section">
+  <div class="list-heading">
+    <h1>Hot right now 🌶️</h1>
+  </div>
+  <app-movies-layout [movies]="movies"></app-movies-layout>
+</section>

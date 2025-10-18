@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
 import { MatButton } from '@angular/material/button';
+import { MoviesLayoutComponent } from '../../shared/components/movies-layout/movies-layout.component';
 
 @Component({
   selector: 'app-home-page',
